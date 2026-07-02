@@ -90,6 +90,17 @@ def get_crop_size(crop_coords: torch.Tensor) -> torch.Tensor:
     return torch.stack([heights, widths], dim=1)
 
 
+def str2bool(value: Union[str, bool]) -> bool:
+    if isinstance(value, bool):
+        return value
+    value = value.lower()
+    if value in ('true', '1', 'yes', 'y', 't'):
+        return True
+    if value in ('false', '0', 'no', 'n', 'f'):
+        return False
+    raise argparse.ArgumentTypeError('Boolean value expected.')
+
+
 def get_args() -> argparse.Namespace:
     """Parses the arguments from the command line."""
     config_parser = parser = argparse.ArgumentParser(description='Training Config', add_help=False)
@@ -176,7 +187,7 @@ def get_args() -> argparse.Namespace:
                         help='Lower bound of number of tokens to mask out (default: %(default)s)')
     parser.add_argument('--masked_cfg_high', default=None, type=int,
                         help='Upper bound of number of tokens to mask out, defaults to total number of tokens minus 1 (default: %(default)s)')
-    parser.add_argument('--thresholding', default=True, type=bool,
+    parser.add_argument('--thresholding', default=True, type=str2bool,
                         help='Whether or not to dynamically clip outputs to [-1,1]. Only affects inference time. (default: %(default)s)')
     parser.add_argument('--loss_fn', default='mse', type=str,
                         help='Diffusion noise loss function. mse, l1, or smooth_l1 (default: %(default)s)')
