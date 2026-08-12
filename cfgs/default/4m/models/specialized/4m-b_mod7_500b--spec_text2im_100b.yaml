@@ -18,7 +18,7 @@ model: fm_base_12e_12d_swiglu_nobias
 patch_size: 16
 input_size: 224
 dtype: bfloat16
-tokenizer_path: "fourm/utils/tokenizer/trained/text_tokenizer_4m_wordpiece_30k.json"
+text_tokenizer_path: "fourm/utils/tokenizer/trained/text_tokenizer_4m_wordpiece_30k.json"
 
 # Train
 epochs: -1

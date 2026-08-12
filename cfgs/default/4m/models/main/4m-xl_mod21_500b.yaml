@@ -16,7 +16,7 @@ model: fm_xlarge_24e_24d_swiglu_nobias
 patch_size: 16
 input_size: 224
 dtype: bfloat16
-tokenizer_path: "fourm/utils/tokenizer/trained/text_tokenizer_4m_wordpiece_30k.json"
+text_tokenizer_path: "fourm/utils/tokenizer/trained/text_tokenizer_4m_wordpiece_30k.json"
 
 # Initialization
 finetune: '/path/to/4M_checkpoint.pth' # Change me. Initialize 4M-21 training from 4M-7 checkpoint
